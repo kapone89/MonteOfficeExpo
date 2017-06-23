@@ -23,7 +23,7 @@ export default class ImagesSearch extends Component {
     render() {
         var screen = new Screen({ name: "Classic Programmers Paintings", website: "http://cpp.kapone89.ml" })
         return (
-          <Container theme={this.props.theme}>
+          <Container>
               <Header searchBar rounded>
                 <Body>
                   <InputGroup>

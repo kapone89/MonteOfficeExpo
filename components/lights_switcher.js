@@ -29,7 +29,7 @@ export default class LightsSwitcher extends Component {
 
   render(){
     return (
-      <Container theme={this.props.theme}>
+      <Container>
           <Header>
               <Left>
                 <Button transparent onPress={router.back}>

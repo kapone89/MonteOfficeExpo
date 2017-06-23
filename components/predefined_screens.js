@@ -13,7 +13,7 @@ import icon from '../services/icon'
 export default class PredefinedScreens extends Component {
     render() {
         return (
-          <Container theme={this.props.theme}>
+          <Container>
               <Header>
                   <Left>
                     <Button transparent onPress={router.back}>

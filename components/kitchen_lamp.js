@@ -20,7 +20,7 @@ export default class KitchenLamp extends Component {
 
   render(){
     return (
-      <Container theme={this.props.theme}>
+      <Container>
           <Header>
             <Left>
               <Button transparent onPress={router.back}>

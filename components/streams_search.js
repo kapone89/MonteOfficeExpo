@@ -27,7 +27,7 @@ export default class StreamsSearch extends Component {
 
     render() {
         return (
-          <Container theme={this.props.theme}>
+          <Container>
               <Header searchBar rounded>
                 <Body>
                   <InputGroup>
