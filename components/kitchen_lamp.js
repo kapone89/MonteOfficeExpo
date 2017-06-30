@@ -7,7 +7,7 @@ import IosTabs from "./ios_tabs";
 import { List, Item, ItemContent, ItemText, Toggle } from "carbon-native"
 import router from "../stores/router"
 import icon from '../services/icon'
-import Toast from 'react-native-simple-toast';
+import Toast from "../services/toast";
 import lightsStore from "../stores/lights_store"
 
 @observer

@@ -8,7 +8,7 @@ import roomsStore from "../stores/rooms_store"
 import { List, Item, ItemContent, ItemText, Toggle } from "carbon-native"
 import router from "../stores/router"
 import icon from '../services/icon'
-import Toast from 'react-native-simple-toast';
+import Toast from "../services/toast";
 
 const rooms_colors = [
   "",

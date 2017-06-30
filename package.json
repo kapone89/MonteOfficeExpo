@@ -21,7 +21,6 @@
     "react": "16.0.0-alpha.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-17.0.0.tar.gz",
     "react-native-elements": "0.6.3",
-    "react-native-simple-toast": "0.0.5",
     "request": "2.79.0",
     "url": "0.11.0",
     "whatwg-fetch": "2.0.3",
