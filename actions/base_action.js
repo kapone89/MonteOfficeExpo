@@ -1,7 +1,10 @@
-import { observable } from "mobx"
+import { observable } from "mobx";
+import { at } from "lodash";
 
 export default class BaseAction {
-  @observable state = "initial";
+  @observable error = null;
+  @observable state = "idle";
+
   // @observable result = []; SAMPLE
 
   // SAMPLE
@@ -10,13 +13,34 @@ export default class BaseAction {
   //   this.state = "success";
   // }
 
-  runSync = async () => {
-    await this.run();
-    return this;
+  onError = (error) => {
+    this.error = error;
   }
 
-  runAsync = () => {
-    this.run();
-    return this;
+  take = (...attrs) => {
+    return at(this, attrs);
+  }
+
+  static async run(params) {
+    const action = new this();
+    await action.run(params);
+    return action;
+  }
+
+  static async runFailsafe(params) {
+    const action = new this();
+    try {
+      await action.run(params);
+    } catch (e) {
+      action.onError(e);
+    }
+    return action;
+  }
+
+  static runAsync(params) {
+    const action = new this();
+    console.log(this, action);
+    action.run(params).catch(action.onError);
+    return action;
   }
 }

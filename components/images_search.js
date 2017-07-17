@@ -22,6 +22,7 @@ export default class ImagesSearch extends Component {
 
     render() {
         var screen = new Screen({ name: "Classic Programmers Paintings", website: "http://cpp.kapone89.ml" })
+        const isWorking = screensStore.state === "working";
         return (
           <Container>
               <Header searchBar rounded>
@@ -38,11 +39,11 @@ export default class ImagesSearch extends Component {
 
               <Content keyboardShouldPersistTaps="always">
                 {
-                  screensStore.isWorking && <Spinner color="#f95346"/>
+                  isWorking && <Spinner color="#f95346"/>
                 }
 
                 {
-                  !screensStore.isWorking && lodash.chunk(screensStore.searchResults, 3).map((chunk) => {
+                  !isWorking && lodash.chunk(screensStore.searchResults, 3).map((chunk) => {
                     return (
                       <View key={chunk[0].id} style={{flex: 1, flexDirection: 'row'}}>
                         {

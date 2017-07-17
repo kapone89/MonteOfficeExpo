@@ -3,6 +3,7 @@ import { fetch } from "fetch";
 import Screen from "../models/screen"
 import { observable } from "mobx"
 import { stringify } from 'query-string';
+import QueryGiphyApi from "../actions/screens/query_giphy_api";
 
 const predefined = [
   new Screen({id: 1, name: "wifi credentials", website: "http://freakone.pl/monte/wifi.html" }),
@@ -14,35 +15,17 @@ const predefined = [
 class ScreensStore {
   @observable chosenScreen = null;
   @observable searchResults = []
-  @observable isWorking = false
+  @observable state = "idle";
 
   constructor() {
     this.predefined = predefined
   }
 
-  async search(query) {
-    try {
-      this.isWorking = true
-      params = {q: query, api_key: "dc6zaTOxFJmzC"}
-      var response = await fetch('http://api.giphy.com/v1/gifs/search?' + stringify(params))
-      var responseJson = await response.json()
-      this.searchResults = this.parseGiphyResponse(responseJson)
-      this.isWorking = false
-    } catch (e) {
-      this.isWorking = false
-      console.log(e);
-    }
-  }
-
-  parseGiphyResponse(data) {
-    return data.data.map((img) => {
-      return new Screen({
-        id: img.id,
-        name: img.slug,
-        thumb: img.images.downsized_still.url,
-        website: `http://max.kapone89.ml/#${img.images.original.url}`,
-      });
-    })
+  search = async (query) => {
+    const action = await QueryGiphyApi.runFailsafe({query});
+    this.searchResults = action.result;
+    this.state = action.state;
+    // [this.searchResults, this.state] = QueryGiphyApi.runAsync({query}).take("result", "state")
   }
 
   selectScreen(screen) {
