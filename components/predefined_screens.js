@@ -8,6 +8,7 @@ import ScreenThumbnail from "./screen_thumbnail"
 import Screen from "../models/screen"
 import screensStore from "../stores/screens_store"
 import icon from '../services/icon'
+import Toast, { ToastElement } from "../services/toast";
 
 @observer
 export default class PredefinedScreens extends Component {
@@ -55,6 +56,7 @@ export default class PredefinedScreens extends Component {
               <Footer >
                  <IosTabs/>
              </Footer>
+             <ToastElement />
           </Container>
         );
     }

@@ -10,7 +10,7 @@ import nowPlayingStore from "../stores/now_playing_store"
 import streamsStore from "../stores/streams_store"
 import router from "../stores/router"
 import icon from '../services/icon'
-import Toast from "../services/toast";
+import Toast, { ToastElement } from "../services/toast";
 
 @observer
 export default class NowPlaying extends Component {
@@ -25,9 +25,13 @@ export default class NowPlaying extends Component {
 
     async playPredefined(stream) {
       Toast.show('Wait...');
-      await stream.play();
-      Toast.show('Done!');
-      await nowPlayingStore.reload()
+      try {
+        await stream.play();
+        Toast.show('Done!');
+        await nowPlayingStore.reload()
+      } catch (e) {
+        Toast.show('Error!');
+      }
     }
 
     render() {
@@ -124,6 +128,7 @@ export default class NowPlaying extends Component {
               <Footer >
                  <IosTabs/>
              </Footer>
+             <ToastElement />
           </Container>
         );
     }

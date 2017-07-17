@@ -8,7 +8,7 @@ import { SearchBar } from 'react-native-elements'
 import streamsStore from "../stores/streams_store"
 import router from "../stores/router"
 import icon from '../services/icon'
-import Toast from "../services/toast";
+import Toast, { ToastElement } from "../services/toast";
 
 @observer
 export default class StreamsSearch extends Component {
@@ -21,8 +21,12 @@ export default class StreamsSearch extends Component {
 
     async play(stream) {
       Toast.show('Wait...');
-      await stream.play();
-      Toast.show('Done!');
+      try {
+        await stream.play();
+        Toast.show('Done!');
+      } catch (e) {
+        Toast.show('Error!');
+      }
     }
 
     render() {
@@ -71,6 +75,7 @@ export default class StreamsSearch extends Component {
               <Footer >
                  <IosTabs/>
              </Footer>
+             <ToastElement />
             </Container>
         );
     }

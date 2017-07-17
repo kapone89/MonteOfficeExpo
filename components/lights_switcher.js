@@ -7,7 +7,7 @@ import lightsStore from "../stores/lights_store"
 import { List, Item, ItemContent, ItemText, Toggle, Badge } from "carbon-native"
 import router from "../stores/router"
 import icon from '../services/icon'
-import Toast from "../services/toast";
+import Toast, { ToastElement } from "../services/toast";
 
 @observer
 export default class LightsSwitcher extends Component {
@@ -91,6 +91,7 @@ export default class LightsSwitcher extends Component {
           <Footer >
              <IosTabs/>
          </Footer>
+         <ToastElement />
       </Container>
     )
   }
