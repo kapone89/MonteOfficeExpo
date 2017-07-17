@@ -30,7 +30,7 @@ export default class StreamsSearch extends Component {
     }
 
     render() {
-        const isWorking = streamsStore.state === "working";
+        const isWorking = streamsStore.state === "running";
         return (
           <Container>
               <Header searchBar rounded>

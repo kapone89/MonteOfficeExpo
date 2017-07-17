@@ -7,14 +7,10 @@ export default class QueryGiphyApi extends BaseAction {
   @observable result = [];
 
   run = async ({query}) => {
-    this.state = "working";
-
     const params = {q: query, api_key: "dc6zaTOxFJmzC"}
     const response = await fetch('http://api.giphy.com/v1/gifs/search?' + stringify(params))
     const rawResult = await response.json()
     this.result = this.parseGiphyResponse(rawResult);
-    
-    this.state = "success";
   }
 
   parseGiphyResponse = (data) => {

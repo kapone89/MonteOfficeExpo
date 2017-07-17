@@ -30,14 +30,18 @@ export default class BaseAction {
 
   static async run(params) {
     const action = new this();
+    action.state = "running";
     await action.run(params);
+    action.state = "success";
     return action;
   }
 
   static async runFailsafe(params) {
     const action = new this();
     try {
+      action.state = "running";
       await action.run(params);
+      action.state = "success";
     } catch (e) {
       action.onError(e);
     }
@@ -46,7 +50,10 @@ export default class BaseAction {
 
   static runAsync(params) {
     const action = new this();
-    action.run(params).catch(action.onError);
+    action.state = "running";
+    action.run(params).then(() => {
+      action.state = "success";
+    }).catch(action.onError);
     return action;
   }
 }

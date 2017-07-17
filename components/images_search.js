@@ -23,7 +23,7 @@ export default class ImagesSearch extends Component {
 
     render() {
         var screen = new Screen({ name: "Classic Programmers Paintings", website: "http://cpp.kapone89.ml" })
-        const isWorking = screensStore.state === "working";
+        const isWorking = screensStore.state === "running";
         return (
           <Container>
               <Header searchBar rounded>

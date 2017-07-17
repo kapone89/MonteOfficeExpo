@@ -10,8 +10,6 @@ export default class QueryRadiosureApi extends BaseAction {
   @observable result = [];
 
   run = async ({query}) => {
-    this.state = "working"
-
     let params = {
       status: "active",
       search: query,
@@ -22,8 +20,6 @@ export default class QueryRadiosureApi extends BaseAction {
     var response = await fetch('http://www.radiosure.com/rsdbms/search.php?' + stringify(params))
     var responseText = await response.text()
     this.result = this.parseRadiosureResponse(responseText);
-
-    this.state = "success";
   }
 
   parseRadiosureResponse = (response) => {

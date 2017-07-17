@@ -6,8 +6,6 @@ import GetStreamUrlsFromPlaylistUrl from "./get_stream_urls_from_playlist_url";
 
 export default class PlayUrl extends BaseAction {
   run = async ({url}) => {
-    this.state = "working"
-
     if (startsWith(url, "http://www.radiosure.com")) {
       await this.playRadiosure(url);
     } else if (/\.(pls|m3u|asx)$/gi.exec(url)) {
@@ -15,8 +13,6 @@ export default class PlayUrl extends BaseAction {
     } else {
       await this.playStreamUrl(url);
     }
-
-    this.state = "success";
   }
 
   playRadiosure = async (radiosurePageUrl) => {
