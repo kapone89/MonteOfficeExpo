@@ -11,6 +11,7 @@ export default class QueryRadiosureApi extends BaseAction {
 
   run = async ({query}) => {
     this.state = "working"
+
     let params = {
       status: "active",
       search: query,
@@ -21,6 +22,7 @@ export default class QueryRadiosureApi extends BaseAction {
     var response = await fetch('http://www.radiosure.com/rsdbms/search.php?' + stringify(params))
     var responseText = await response.text()
     this.result = this.parseRadiosureResponse(responseText);
+
     this.state = "success";
   }
 
@@ -32,7 +34,7 @@ export default class QueryRadiosureApi extends BaseAction {
         id: n.attributes[0].nodeValue,
         name: n.textContent,
         genre: n.parentNode.parentNode.childNodes[3].textContent,
-        radiosure_page: ("http://www.radiosure.com/rsdbms/" + n.attributes[0].nodeValue),
+        url: ("http://www.radiosure.com/rsdbms/" + n.attributes[0].nodeValue),
       })
     })
   }
