@@ -5,6 +5,7 @@ import { select } from 'xpath';
 import { stringify } from 'query-string';
 import Stream from "../models/stream"
 import { observable } from "mobx"
+import QueryRadiosureApi from "../actions/streams/query_radiosure_api";
 
 const predefined = [
   new Stream({id: 1, name: "Yodeling", genre: "Funny", url: "https://dl.dropboxusercontent.com/s/mpht1mvcw8pxotl/National%20Switzerland%20%20Anthem-%20Yodeling.mp3"}),
@@ -15,43 +16,16 @@ const predefined = [
 
 class StreamsStore {
   @observable searchResults = [];
-  @observable isWorking = false
+  @observable state = "idle";
 
   constructor() {
     this.predefined = predefined;
   }
 
-  async search(query) {
-    try {
-      this.isWorking = true
-      let params = {
-        status: "active",
-        search: query,
-        pos: 0,
-        reset_pos: 0,
-      }
-
-      var response = await fetch('http://www.radiosure.com/rsdbms/search.php?' + stringify(params))
-      var responseText = await response.text()
-      this.searchResults = this.parseRadiosureResponse(responseText)
-      this.isWorking = false
-    } catch (e) {
-      this.isWorking = false
-      console.log(e);
-    }
-  }
-
-  parseRadiosureResponse(response) {
-    var doc = new DOMParser({errorHandler: {}}).parseFromString(response)
-    var nodes = select("//a[contains(@href, 'details.php')]", doc)
-    return this.searchResults = nodes.map((n) => {
-      return new Stream({
-        id: n.attributes[0].nodeValue,
-        name: n.textContent,
-        genre: n.parentNode.parentNode.childNodes[3].textContent,
-        radiosure_page: ("http://www.radiosure.com/rsdbms/" + n.attributes[0].nodeValue),
-      })
-    })
+  search = (query) => {
+    QueryRadiosureApi.runAsync({query}).react((action) => {
+      [this.searchResults, this.state] = action.take("result", "state");
+    });
   }
 }
 

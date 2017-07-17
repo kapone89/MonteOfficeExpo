@@ -21,11 +21,10 @@ class ScreensStore {
     this.predefined = predefined
   }
 
-  search = async (query) => {
-    const action = await QueryGiphyApi.runFailsafe({query});
-    this.searchResults = action.result;
-    this.state = action.state;
-    // [this.searchResults, this.state] = QueryGiphyApi.runAsync({query}).take("result", "state")
+  search = (query) => {
+    QueryGiphyApi.runAsync({query}).react((action) => {
+      [this.searchResults, this.state] = action.take("result", "state");
+    });
   }
 
   selectScreen(screen) {

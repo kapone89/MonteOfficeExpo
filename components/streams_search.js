@@ -26,6 +26,7 @@ export default class StreamsSearch extends Component {
     }
 
     render() {
+        const isWorking = streamsStore.state === "working";
         return (
           <Container>
               <Header searchBar rounded>
@@ -43,11 +44,11 @@ export default class StreamsSearch extends Component {
 
               <Content keyboardShouldPersistTaps="always">
                 {
-                  streamsStore.isWorking && <Spinner color="#f95346"/>
+                  isWorking && <Spinner color="#f95346"/>
                 }
 
                 {
-                  !streamsStore.isWorking && <List>
+                  !isWorking && <List>
                     {
                       streamsStore.searchResults.map((stream) => {
                         return (
