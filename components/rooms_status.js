@@ -53,49 +53,53 @@ export default class RoomsStatus extends Component {
           </Header>
 
           <Content>
-            <Card>
-              <CardItem header>
-                  <Text>Available</Text>
-              </CardItem>
+            <Text>Available</Text>
 
-              <CardItem>
-                {
-                  roomsStore.isWorking && <Spinner color="#f95346"/>
-                }
-                {
-                  !roomsStore.isWorking && roomsStore.availableRooms.map((room) => {
-                    return (
-                      <RneButton key={room.id} title={room.description} backgroundColor={rooms_colors[room.id]} onPress={() => this.onRoomClick(room)}/>
-                    )
-                  })
-                }
-                {
-                  !roomsStore.isWorking && roomsStore.availableRooms.length == 0 &&
-                  <Text>All rooms are occupied at the moment</Text>
-                }
-              </CardItem>
+            <View>
+              {
+                roomsStore.isWorking && <Spinner color="#f95346"/>
+              }
+              {
+                !roomsStore.isWorking && roomsStore.availableRooms.map((room) => {
+                  return (
+                    <RneButton
+                      key={room.id}
+                      title={room.description}
+                      backgroundColor={rooms_colors[room.id]}
+                      onPress={() => this.onRoomClick(room)}
+                    />
+                  )
+                })
+              }
+              {
+                !roomsStore.isWorking && roomsStore.availableRooms.length == 0 &&
+                <Text>All rooms are occupied at the moment</Text>
+              }
+            </View>
 
-              <CardItem header>
-                  <Text>Occupied</Text>
-              </CardItem>
+            <Text>Occupied</Text>
 
-              <CardItem>
-                {
-                  roomsStore.isWorking && <Spinner color="#f95346"/>
-                }
-                {
-                  !roomsStore.isWorking && roomsStore.occupiedRooms.map((room) => {
-                    return (
-                      <RneButton key={room.id} title={room.description} backgroundColor="gray" onPress={() => this.onRoomClick(room)}/>
-                    )
-                  })
-                }
-                {
-                  !roomsStore.isWorking && roomsStore.occupiedRooms.length == 0 &&
-                  <Text>All rooms are available</Text>
-                }
-              </CardItem>
-            </Card>
+            <View>
+              {
+                roomsStore.isWorking && <Spinner color="#f95346"/>
+              }
+              {
+                !roomsStore.isWorking && roomsStore.occupiedRooms.map((room) => {
+                  return (
+                    <RneButton
+                      key={room.id}
+                      title={room.description}
+                      backgroundColor="gray"
+                      onPress={() => this.onRoomClick(room)}
+                    />
+                  )
+                })
+              }
+              {
+                !roomsStore.isWorking && roomsStore.occupiedRooms.length == 0 &&
+                <Text>All rooms are available</Text>
+              }
+            </View>
           </Content>
 
           <Footer >

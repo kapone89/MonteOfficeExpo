@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { View } from "react-native"
+import { View, Slider } from "react-native"
 import { observer } from "mobx-react/native"
 import { Container, Header, Content, Footer, Button, Title, Spinner, Grid, Col, Card, CardItem, Text, Icon, Left, Right, Body, H1 } from 'native-base';
-import { Range } from 'carbon-native';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import { Item, ItemIcon, ItemContent, ItemText, Note, List } from "carbon-native"
 import IosTabs from "./ios_tabs";
@@ -90,7 +89,8 @@ export default class NowPlaying extends Component {
 
                         <CardItem>
                           <Body>
-                            <Range
+                            <Slider
+                              style={{width: "100%"}}
                               onValueChange={(v) => this.changeVolumeDelayed(v)}
                               value={nowPlayingStore.volume / 100}
                             />

@@ -76,7 +76,6 @@ export default class LightsSwitcher extends Component {
                       <ItemContent>
                         <ItemText>{light.description}</ItemText>
                         <Toggle
-                          color="danger"
                           onValueChange={light.toggle}
                           value={light.state}
                         />
