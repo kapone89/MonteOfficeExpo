@@ -11,11 +11,11 @@ import getTheme from '../native-base-theme/components';
 export default class MonteOffice extends Component {
 
     render() {
-        if ( Platform.OS === 'ios' ) {
-          StatusBar.setBarStyle('light-content');
-        } else {
-          StatusBar.setBackgroundColor('#d6493e');
-        }
+        // if ( Platform.OS === 'ios' ) {
+        //   StatusBar.setBarStyle('light-content');
+        // } else {
+        //   StatusBar.setBackgroundColor('#d6493e');
+        // }
 
         const CurrentRoute = router.currentComponent
         return (

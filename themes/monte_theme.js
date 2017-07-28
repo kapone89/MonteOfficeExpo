@@ -2,6 +2,10 @@ import Color from 'color';
 
 import {Platform} from 'react-native';
 
+export monteColor = "#f95346"
+export monteColorDark = "#d6493e"
+
+
 export default {
 
     // Badge
