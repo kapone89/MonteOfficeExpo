@@ -15,7 +15,7 @@
     "lodash": "4.17.2",
     "mobx": "2.6.0",
     "mobx-react": "3.5.8",
-    "native-base": "2.1.5",
+    "native-base": "2.2.0",
     "playlist-parser": "0.0.12",
     "query-string": "4.2.3",
     "react": "16.0.0-alpha.6",
