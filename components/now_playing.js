@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, Slider } from "react-native"
 import { observer } from "mobx-react/native"
 import { Container, Header, Content, Footer, Button, Title, Spinner, Grid, Col, Card, CardItem, Text, Icon, Left, Right, Body, H1 } from 'native-base';
-import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import { Item, ItemIcon, ItemContent, ItemText, Note, List } from "carbon-native"
 import IosTabs from "./ios_tabs";
 import nowPlayingStore from "../stores/now_playing_store"
