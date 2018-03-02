@@ -10,7 +10,7 @@ import Screen from "../models/screen"
 import lodash from "lodash"
 import router from "../stores/router"
 import icon from '../services/icon'
-import Toast, { ToastElement } from "../services/toast";
+import Toast from "../services/toast";
 
 @observer
 export default class ImagesSearch extends Component {
@@ -67,7 +67,6 @@ export default class ImagesSearch extends Component {
               <Footer >
                  <IosTabs/>
              </Footer>
-             <ToastElement />
           </Container>
         );
     }

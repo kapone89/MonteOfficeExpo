@@ -8,7 +8,7 @@ import { SearchBar } from 'react-native-elements'
 import streamsStore from "../stores/streams_store"
 import router from "../stores/router"
 import icon from '../services/icon'
-import Toast, { ToastElement } from "../services/toast";
+import Toast from "../services/toast";
 
 @observer
 export default class StreamsSearch extends Component {
@@ -73,7 +73,6 @@ export default class StreamsSearch extends Component {
               <Footer >
                  <IosTabs/>
              </Footer>
-             <ToastElement />
             </Container>
         );
     }

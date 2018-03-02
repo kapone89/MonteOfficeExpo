@@ -8,7 +8,7 @@ import roomsStore from "../stores/rooms_store"
 import { List, Item, ItemContent, ItemText, Toggle } from "carbon-native"
 import router from "../stores/router"
 import icon from '../services/icon'
-import Toast, { ToastElement } from "../services/toast";
+import Toast from "../services/toast";
 
 const rooms_colors = [
   "",
@@ -105,7 +105,6 @@ export default class RoomsStatus extends Component {
           <Footer >
              <IosTabs/>
          </Footer>
-         <ToastElement />
       </Container>
     )
   }

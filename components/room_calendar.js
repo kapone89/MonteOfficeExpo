@@ -7,7 +7,7 @@ import IosTabs from "./ios_tabs";
 import roomsStore from "../stores/rooms_store"
 import router from "../stores/router"
 import icon from '../services/icon'
-import Toast, { ToastElement } from "../services/toast";
+import Toast from "../services/toast";
 
 @observer
 export default class RoomCalendar extends Component {
@@ -42,7 +42,6 @@ export default class RoomCalendar extends Component {
               <Footer >
                  <IosTabs/>
              </Footer>
-             <ToastElement />
           </Container>
         );
     }

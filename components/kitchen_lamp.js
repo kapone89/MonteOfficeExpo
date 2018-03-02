@@ -7,7 +7,7 @@ import IosTabs from "./ios_tabs";
 import { List, Item, ItemContent, ItemText, Toggle } from "carbon-native"
 import router from "../stores/router"
 import icon from '../services/icon'
-import Toast, { ToastElement } from "../services/toast";
+import Toast from "../services/toast";
 import lightsStore from "../stores/lights_store"
 
 @observer
@@ -56,7 +56,6 @@ export default class KitchenLamp extends Component {
           <Footer >
              <IosTabs/>
          </Footer>
-         <ToastElement />
       </Container>
     )
   }

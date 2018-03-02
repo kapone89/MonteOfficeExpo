@@ -8,7 +8,7 @@ import screensStore from "../stores/screens_store"
 import { Button as RneButton } from 'react-native-elements'
 import router from "../stores/router"
 import icon from '../services/icon'
-import Toast, { ToastElement } from "../services/toast";
+import Toast from "../services/toast";
 
 @observer
 export default class ScreenPreview extends Component {
@@ -66,7 +66,6 @@ export default class ScreenPreview extends Component {
               <Footer >
                  <IosTabs/>
              </Footer>
-             <ToastElement />
           </Container>
         );
     }
