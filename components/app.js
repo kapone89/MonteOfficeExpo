@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
 import { observer } from "mobx-react/native"
 import router from "../stores/router"
-import { Platform, StatusBar } from "react-native"
+import { Platform, StatusBar, BackAndroid } from "react-native"
 import { Root } from "native-base";
+
+if (Platform.OS === 'android') {
+  BackAndroid.addEventListener('hardwareBackPress', function() {
+    return router.back();
+  });
+}
 
 @observer
 export default class MonteOffice extends Component {
 
-    render() {
-        const CurrentRoute = router.currentComponent
-        return (
-          <Root>
-            <CurrentRoute />
-          </Root>
-        );
-    }
+  render() {
+    const CurrentRoute = router.currentComponent
+    return (
+      <Root>
+        <CurrentRoute/>
+      </Root>
+    );
+  }
 }
