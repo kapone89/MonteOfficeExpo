@@ -1,5 +1,4 @@
 import lodash from "lodash"
-import { fetch } from "fetch";
 import Screen from "../models/screen"
 import { observable } from "mobx"
 import { stringify } from 'query-string';

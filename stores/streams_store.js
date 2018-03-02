@@ -1,5 +1,4 @@
 import lodash from "lodash"
-import { fetch } from "fetch";
 import { DOMParser } from 'xmldom';
 import { select } from 'xpath';
 import { stringify } from 'query-string';

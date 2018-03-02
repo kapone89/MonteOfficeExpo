@@ -1,7 +1,6 @@
 import BaseAction from "../base_action";
 import { observable } from "mobx"
 import { stringify } from 'query-string';
-import { fetch } from "fetch";
 import { DOMParser } from 'xmldom';
 import { select } from 'xpath';
 import Stream from "../../models/stream"

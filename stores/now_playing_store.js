@@ -1,5 +1,4 @@
 import { observable } from "mobx"
-import { fetch } from "fetch";
 
 class NowPlayingStore {
   @observable nowPlayingUrl = null;

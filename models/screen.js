@@ -1,5 +1,4 @@
 import lodash from "lodash"
-import { fetch } from "fetch";
 import { stringify } from 'query-string';
 
 export default class Screen {
