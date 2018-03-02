@@ -90,6 +90,8 @@ export default class NowPlaying extends Component {
                           <Body>
                             <Slider
                               style={{width: "100%"}}
+                              minimumTrackTintColor="#f95346"
+                              thumbTintColor="#9e3128"
                               onValueChange={(v) => this.changeVolumeDelayed(v)}
                               value={nowPlayingStore.volume / 100}
                             />

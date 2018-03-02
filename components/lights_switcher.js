@@ -5,6 +5,7 @@ import { Button as RneButton } from 'react-native-elements'
 import IosTabs from "./ios_tabs";
 import lightsStore from "../stores/lights_store"
 import { List, Item, ItemContent, ItemText, Toggle, Badge } from "carbon-native"
+import { Switch, Platform } from "react-native"
 import router from "../stores/router"
 import icon from '../services/icon'
 import Toast from "../services/toast";
@@ -75,7 +76,9 @@ export default class LightsSwitcher extends Component {
                     <Item key={light.id}>
                       <ItemContent>
                         <ItemText>{light.description}</ItemText>
-                        <Toggle
+                        <Switch
+                          thumbTintColor={Platform.OS === 'android' ? "#f95346" : null}
+                          onTintColor={ Platform.OS === 'android' ? "#ffcbc7" : "#f95346" }
                           onValueChange={light.toggle}
                           value={light.state}
                         />

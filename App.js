@@ -17,7 +17,7 @@ import {
 import {observer} from "mobx-react/native"
 import {observable} from "mobx";
 import getTheme from './native-base-theme/components';
-import monte from './native-base-theme/variables/monte';
+import monte_platform from './native-base-theme/variables/monte_platform';
 import MonteOffice from './components/app';
 
 @observer
@@ -30,7 +30,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    return (this.fontsLoaded && <StyleProvider style={getTheme(monte)}>
+    return (this.fontsLoaded && <StyleProvider style={getTheme(monte_platform)}>
       <MonteOffice />
     </StyleProvider>);
   }

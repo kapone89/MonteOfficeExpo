@@ -15,7 +15,7 @@ export default class IosTabs extends Component {
             </Button>
             <Button onPress={() => { router.go("/predefined_screens") }}>
                 <Icon name={icon('desktop')} />
-                <Text>Screens</Text>
+                <Text>TVs</Text>
             </Button>
             <Button onPress={() => { router.go("/lights_switcher") }}>
                 <Icon name={icon('flash')} />
