@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { WebView, TouchableOpacity } from "react-native"
 import { observer } from "mobx-react/native"
 import { Container, Header, Content, Footer, Button, Icon, Title, Text, Grid, Col, Row, Left, Right, Body } from 'native-base';
-import IosTabs from "./ios_tabs";
 import ScreenThumbnail from "./screen_thumbnail"
 import screensStore from "../stores/screens_store"
 import { Button as RneButton } from 'react-native-elements'
@@ -62,10 +61,6 @@ export default class ScreenPreview extends Component {
                   </Row>
                 </Grid>
               </Content>
-
-              <Footer >
-                 <IosTabs/>
-             </Footer>
           </Container>
         );
     }

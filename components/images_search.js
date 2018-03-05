@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { WebView, TouchableOpacity, View } from "react-native"
 import { observer } from "mobx-react/native"
 import { Container, Header, Content, Footer, Button, Icon, Title, List, ListItem, Text, Spinner, Input, InputGroup, Left, Right, Body, Item } from 'native-base';
-import IosTabs from "./ios_tabs";
 import { SearchBar } from 'react-native-elements'
 import screensStore from "../stores/screens_store"
 import ScreenThumbnail from "./screen_thumbnail"
@@ -63,10 +62,6 @@ export default class ImagesSearch extends Component {
                   })
                 }
               </Content>
-
-              <Footer >
-                 <IosTabs/>
-             </Footer>
           </Container>
         );
     }

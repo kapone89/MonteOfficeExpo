@@ -3,7 +3,6 @@ import { View, Slider } from "react-native"
 import { observer } from "mobx-react/native"
 import { Container, Header, Content, Footer, Button, Title, Spinner, Grid, Col, Card, CardItem, Text, Icon, Left, Right, Body, H1 } from 'native-base';
 import { Item, ItemIcon, ItemContent, ItemText, Note, List } from "carbon-native"
-import IosTabs from "./ios_tabs";
 import nowPlayingStore from "../stores/now_playing_store"
 import streamsStore from "../stores/streams_store"
 import router from "../stores/router"
@@ -125,10 +124,6 @@ export default class NowPlaying extends Component {
                     </View>
                </Card>
               </Content>
-
-              <Footer >
-                 <IosTabs/>
-             </Footer>
           </Container>
         );
     }

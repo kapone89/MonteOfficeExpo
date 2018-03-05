@@ -3,7 +3,6 @@ import { WebView, TouchableOpacity, View } from "react-native"
 import { observer } from "mobx-react/native"
 import { observable } from "mobx"
 import { Container, Header, Content, Footer, Button, Icon, Title, Text, Grid, Col, Row, Left, Right, Body } from 'native-base';
-import IosTabs from "./ios_tabs";
 import roomsStore from "../stores/rooms_store"
 import router from "../stores/router"
 import icon from '../services/icon'
@@ -38,10 +37,6 @@ export default class RoomCalendar extends Component {
                   <WebView source={{uri: roomsStore.chosenRoom.getCalendarUri()}} style={{height: this.calHeight}}/>
                 </View>
               </Content>
-
-              <Footer >
-                 <IosTabs/>
-             </Footer>
           </Container>
         );
     }

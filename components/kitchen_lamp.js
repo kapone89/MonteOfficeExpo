@@ -3,7 +3,6 @@ import { View } from "react-native"
 import { observer } from "mobx-react/native"
 import { Container, Header, Content, Footer, Title, Icon, Button, Spinner, Card, CardItem, Text, Left, Right, Body } from 'native-base';
 import { Button as RneButton } from 'react-native-elements'
-import IosTabs from "./ios_tabs";
 import { List, Item, ItemContent, ItemText, Toggle } from "carbon-native"
 import router from "../stores/router"
 import icon from '../services/icon'
@@ -52,10 +51,6 @@ export default class KitchenLamp extends Component {
             }
             </View>
           </Content>
-
-          <Footer >
-             <IosTabs/>
-         </Footer>
       </Container>
     )
   }

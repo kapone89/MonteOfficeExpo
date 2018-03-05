@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { observer } from "mobx-react/native"
 import { Container, Header, Content, Footer, Title, Icon, Button, Spinner, Col, Row, Grid, Left, Right, Body} from 'native-base';
 import { Button as RneButton } from 'react-native-elements'
-import IosTabs from "./ios_tabs";
 import lightsStore from "../stores/lights_store"
 import { List, Item, ItemContent, ItemText, Toggle, Badge } from "carbon-native"
 import { Switch, Platform } from "react-native"
@@ -89,10 +88,6 @@ export default class LightsSwitcher extends Component {
               }
             </List>
           </Content>
-
-          <Footer >
-             <IosTabs/>
-         </Footer>
       </Container>
     )
   }

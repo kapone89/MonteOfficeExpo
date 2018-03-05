@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View } from "react-native"
 import { observer } from "mobx-react/native"
 import { Container, Header, Content, Footer, Button, Icon, Title, List, ListItem, Text, Left, Right, Body } from 'native-base';
-import IosTabs from "./ios_tabs";
 import router from '../stores/router';
 import ScreenThumbnail from "./screen_thumbnail"
 import Screen from "../models/screen"
@@ -52,10 +51,6 @@ export default class PredefinedScreens extends Component {
                   }
                 </List>
               </Content>
-
-              <Footer >
-                 <IosTabs/>
-             </Footer>
           </Container>
         );
     }
