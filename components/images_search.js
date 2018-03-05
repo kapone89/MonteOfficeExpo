@@ -23,7 +23,7 @@ export default class ImagesSearch extends Component {
         var screen = new Screen({ name: "Classic Programmers Paintings", website: "http://cpp.kapone89.ml" })
         const isWorking = screensStore.state === "running";
         return (
-          <Container>
+          <Container style={{backgroundColor: "#ffffff"}}>
               <Header searchBar rounded>
                 <Item>
                   <Icon active name={icon('search')} />

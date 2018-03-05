@@ -28,7 +28,7 @@ export default class LightsSwitcher extends Component {
 
   render(){
     return (
-      <Container>
+      <Container style={{backgroundColor: "#ffffff"}}>
           <Header>
               <Left>
                 <Button transparent onPress={() => this.props.navigation.goBack()}>

@@ -32,7 +32,7 @@ export default class NowPlaying extends Component {
 
     render() {
         return (
-          <Container>
+          <Container style={{backgroundColor: "#ffffff"}}>
               <Header>
                   <Left>
                     <Button transparent onPress={() => this.props.navigation.goBack()}>

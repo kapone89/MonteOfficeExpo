@@ -143,9 +143,10 @@ export default {
   toolbarDefaultBorder: "#a7a6ab",
   iosStatusbar: "light-content",
   get statusBarColor() {
-    return color(this.toolbarDefaultBg)
-      .darken(0.2)
-      .hex();
+    return this.toolbarDefaultBg;
+    // return color(this.toolbarDefaultBg)
+    //   .darken(0.2)
+    //   .hex();
   },
   get darkenHeader() {
     return color(this.tabBgColor)

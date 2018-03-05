@@ -30,7 +30,7 @@ export default class StreamsSearch extends Component {
     render() {
         const isWorking = streamsStore.state === "running";
         return (
-          <Container>
+          <Container style={{backgroundColor: "#ffffff"}}>
               <Header searchBar rounded>
                 <Item>
                   <Icon active name={icon('search')} />
