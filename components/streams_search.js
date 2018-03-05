@@ -5,7 +5,6 @@ import { TouchableHighlight } from "react-native"
 import { Item as CnItem, ItemIcon, ItemContent, ItemText, Note, List } from "carbon-native"
 import { SearchBar } from 'react-native-elements'
 import streamsStore from "../stores/streams_store"
-import router from "../stores/router"
 import icon from '../services/icon'
 import Toast from "../services/toast";
 
@@ -38,7 +37,7 @@ export default class StreamsSearch extends Component {
                   <Input placeholder="Find radio online" onChangeText={(x) => this.searchStreamsDelayed(x)} />
                   <Icon active name={icon('musical-notes')} />
                 </Item>
-                <Button transparent onPress={router.back}>
+                <Button transparent onPress={() => this.props.navigation.goBack()}>
                     <Text>Back</Text>
                 </Button>
               </Header>

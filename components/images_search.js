@@ -7,7 +7,6 @@ import screensStore from "../stores/screens_store"
 import ScreenThumbnail from "./screen_thumbnail"
 import Screen from "../models/screen"
 import lodash from "lodash"
-import router from "../stores/router"
 import icon from '../services/icon'
 import Toast from "../services/toast";
 
@@ -30,7 +29,7 @@ export default class ImagesSearch extends Component {
                   <Icon active name={icon('search')} />
                   <Input placeholder="Find GIFs online" onChangeText={(x) => this.searchImagesDelayed(x)} />
                 </Item>
-                <Button transparent onPress={router.back}>
+                <Button transparent onPress={() => this.props.navigation.goBack()}>
                     <Text>Back</Text>
                 </Button>
               </Header>
@@ -52,7 +51,7 @@ export default class ImagesSearch extends Component {
                                 key={screen.id}
                                 screen={screen}
                                 size={0.333}
-                                onPress={() => { screensStore.selectScreen(screen); router.go("/screen_preview") }}
+                                onPress={() => { screensStore.selectScreen(screen); this.props.navigation.navigate('ScreenPreview') }}
                               />
                             )
                           })

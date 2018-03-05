@@ -5,7 +5,6 @@ import { Button as RneButton } from 'react-native-elements'
 import lightsStore from "../stores/lights_store"
 import { List, Item, ItemContent, ItemText, Toggle, Badge } from "carbon-native"
 import { Switch, Platform } from "react-native"
-import router from "../stores/router"
 import icon from '../services/icon'
 import Toast from "../services/toast";
 
@@ -32,7 +31,7 @@ export default class LightsSwitcher extends Component {
       <Container>
           <Header>
               <Left>
-                <Button transparent onPress={router.back}>
+                <Button transparent onPress={() => this.props.navigation.goBack()}>
                     <Icon name={icon('arrow-back')} />
                 </Button>
               </Left>
@@ -63,7 +62,7 @@ export default class LightsSwitcher extends Component {
             </Grid>
 
             <List>
-              <Item onPress={() => router.go("/kitchen_lamp")}>
+              <Item onPress={() => this.props.navigation.navigate('KitchenLamp')}>
                 <ItemContent>
                   <ItemText>Kitchen lamp</ItemText>
                   <Badge text="Choose color" color="primary" />

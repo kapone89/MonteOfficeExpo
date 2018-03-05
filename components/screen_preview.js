@@ -5,7 +5,6 @@ import { Container, Header, Content, Footer, Button, Icon, Title, Text, Grid, Co
 import ScreenThumbnail from "./screen_thumbnail"
 import screensStore from "../stores/screens_store"
 import { Button as RneButton } from 'react-native-elements'
-import router from "../stores/router"
 import icon from '../services/icon'
 import Toast from "../services/toast";
 
@@ -22,7 +21,7 @@ export default class ScreenPreview extends Component {
           <Container>
               <Header>
                   <Left>
-                    <Button transparent onPress={router.back}>
+                    <Button transparent onPress={() => this.props.navigation.goBack()}>
                         <Icon name={icon('arrow-back')} />
                     </Button>
                   </Left>

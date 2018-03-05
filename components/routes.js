@@ -1,4 +1,4 @@
-import { TabNavigator } from 'react-navigation';
+import { TabNavigator, StackNavigator } from 'react-navigation';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import React, { Component } from 'react';
 
@@ -21,16 +21,11 @@ const tabsIcons = {
   "RoomsStatus": icon('contacts'),
 }
 
-export default TabNavigator({
-  "NowPlaying": {screen: NowPlaying, navigationOptions: { title: "Toilet" }},
-  // "StreamsSearch": {screen: StreamsSearch, },
-  // "ImagesSearch": {screen: ImagesSearch},
+const TabsStack = TabNavigator({
+  "NowPlaying": {screen: NowPlaying, navigationOptions: { title: "Toilet", showTab: false }},
   "PredefinedScreens": {screen: PredefinedScreens, navigationOptions: { title: "TVs" }},
-  // "ScreenPreview": {screen: ScreenPreview},
   "LightsSwitcher": {screen: LightsSwitcher, navigationOptions: { title: "Lights" }},
   "RoomsStatus": {screen: RoomsStatus, navigationOptions: { title: "Rooms" }},
-  // "KitchenLamp": {screen: KitchenLamp},
-  // "RoomCalendar": {screen: RoomCalendar},
 },
 {
   initialRouteName: "NowPlaying",
@@ -54,3 +49,18 @@ export default TabNavigator({
   swipeEnabled: true,
   animationEnabled: true,
 });
+
+
+const RootStack = StackNavigator({
+  "Tabs": { screen: TabsStack },
+  "StreamsSearch": {screen: StreamsSearch, },
+  "ImagesSearch": {screen: ImagesSearch},
+  "ScreenPreview": {screen: ScreenPreview},
+  "KitchenLamp": {screen: KitchenLamp},
+  "RoomCalendar": {screen: RoomCalendar},
+}, {
+  mode: 'modal',
+  headerMode: 'none',
+});
+
+export default RootStack;

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View } from "react-native"
 import { observer } from "mobx-react/native"
 import { Container, Header, Content, Footer, Button, Icon, Title, List, ListItem, Text, Left, Right, Body } from 'native-base';
-import router from '../stores/router';
 import ScreenThumbnail from "./screen_thumbnail"
 import Screen from "../models/screen"
 import screensStore from "../stores/screens_store"
@@ -16,7 +15,7 @@ export default class PredefinedScreens extends Component {
           <Container>
               <Header>
                   <Left>
-                    <Button transparent onPress={router.back}>
+                    <Button transparent onPress={() => this.props.navigation.goBack()}>
                         <Icon name={icon('arrow-back')} />
                     </Button>
                   </Left>
@@ -26,7 +25,7 @@ export default class PredefinedScreens extends Component {
                   </Body>
 
                   <Right>
-                    <Button transparent onPress={() => { router.go("/images_search") }}>
+                    <Button transparent onPress={() => { this.props.navigation.navigate('ImagesSearch') }}>
                         <Icon name={icon('search')} />
                     </Button>
                   </Right>
@@ -44,7 +43,7 @@ export default class PredefinedScreens extends Component {
                               <Text>{screen.name}</Text>
 
                           </ListItem>
-                          <ScreenThumbnail thumb screen={screen} size={1} onPress={() => { screensStore.selectScreen(screen); router.go("/screen_preview") }} />
+                          <ScreenThumbnail thumb screen={screen} size={1} onPress={() => { screensStore.selectScreen(screen); this.props.navigation.navigate('ScreenPreview') }} />
                         </View>
                       )
                     })

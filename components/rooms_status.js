@@ -5,7 +5,6 @@ import { Container, Header, Content, Footer, Title, Icon, Button, Spinner, Card,
 import { Button as RneButton } from 'react-native-elements'
 import roomsStore from "../stores/rooms_store"
 import { List, Item, ItemContent, ItemText, Toggle } from "carbon-native"
-import router from "../stores/router"
 import icon from '../services/icon'
 import Toast from "../services/toast";
 
@@ -27,7 +26,7 @@ export default class RoomsStatus extends Component {
 
   onRoomClick(room) {
     roomsStore.selectRoom(room)
-    router.go("/room_calendar")
+    this.props.navigation.navigate('RoomCalendar')
   }
 
   render(){
@@ -35,7 +34,7 @@ export default class RoomsStatus extends Component {
       <Container>
           <Header>
               <Left>
-                <Button transparent onPress={router.back}>
+                <Button transparent onPress={() => this.props.navigation.goBack()}>
                     <Icon name={icon('arrow-back')} />
                 </Button>
               </Left>

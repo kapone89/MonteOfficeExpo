@@ -4,7 +4,6 @@ import { observer } from "mobx-react/native"
 import { observable } from "mobx"
 import { Container, Header, Content, Footer, Button, Icon, Title, Text, Grid, Col, Row, Left, Right, Body } from 'native-base';
 import roomsStore from "../stores/rooms_store"
-import router from "../stores/router"
 import icon from '../services/icon'
 import Toast from "../services/toast";
 
@@ -20,7 +19,7 @@ export default class RoomCalendar extends Component {
           <Container>
               <Header>
                 <Left>
-                  <Button transparent onPress={router.back}>
+                  <Button transparent onPress={() => this.props.navigation.goBack()}>
                       <Icon name={icon('arrow-back')} />
                   </Button>
                 </Left>

@@ -5,7 +5,6 @@ import { Container, Header, Content, Footer, Button, Title, Spinner, Grid, Col, 
 import { Item, ItemIcon, ItemContent, ItemText, Note, List } from "carbon-native"
 import nowPlayingStore from "../stores/now_playing_store"
 import streamsStore from "../stores/streams_store"
-import router from "../stores/router"
 import icon from '../services/icon'
 import Toast from "../services/toast";
 
@@ -36,7 +35,7 @@ export default class NowPlaying extends Component {
           <Container>
               <Header>
                   <Left>
-                    <Button transparent onPress={router.back}>
+                    <Button transparent onPress={() => this.props.navigation.goBack()}>
                         <Icon name={icon('arrow-back')} />
                     </Button>
                   </Left>
@@ -46,7 +45,7 @@ export default class NowPlaying extends Component {
                   </Body>
 
                   <Right>
-                    <Button transparent onPress={() => { router.go("/streams_search") }}>
+                    <Button transparent onPress={() => { this.props.navigation.navigate('StreamsSearch') }}>
                         <Icon name={icon('search')} />
                     </Button>
                   </Right>
