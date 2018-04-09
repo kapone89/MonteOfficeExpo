@@ -1,8 +1,6 @@
-import { observable } from "mobx"
-import lodash from "lodash"
-import autobind from "autobind-decorator"
+import { observable } from 'mobx';
+import lodash from 'lodash';
 
-@autobind
 export default class Light {
   @observable state = false;
 
@@ -12,10 +10,10 @@ export default class Light {
     this.state = params.state;
   }
 
-  async toggle() {
+  toggle = async () => {
     try {
       this.state = !this.state;
-      await fetch('http://172.20.0.29:8080/toggle/' + this.id)
+      await fetch(`http://172.20.0.29:8080/toggle/${this.id}`);
       // await this.reloadState()
     } catch (e) {
       console.log(e);
@@ -23,11 +21,11 @@ export default class Light {
   }
 
   // doesn't work. maybe request is too quick
-  async reloadState() {
+  reloadState = async () => {
     try {
-      var response = await fetch('http://172.20.0.29:8080/lights')
-      var responseJson = await response.json()
-      this.state = lodash.find(responseJson, {id: this.id}).state;
+      const response = await fetch('http://172.20.0.29:8080/lights');
+      const responseJson = await response.json();
+      this.state = lodash.find(responseJson, { id: this.id }).state;
     } catch (e) {
       console.log(e);
     }

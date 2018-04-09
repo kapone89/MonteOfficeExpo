@@ -1,9 +1,9 @@
-import { observable, autorun } from "mobx";
-import { at } from "lodash";
+import { observable, autorun } from 'mobx';
+import { at } from 'lodash';
 
 export default class BaseAction {
   @observable error = null;
-  @observable state = "idle";
+  @observable state = 'idle';
   @observable reactionCallback = null;
 
   // @observable result = []; SAMPLE
@@ -17,12 +17,10 @@ export default class BaseAction {
   onError = (error) => {
     console.log(error);
     this.error = error;
-    this.state = "failed";
+    this.state = 'failed';
   }
 
-  take = (...attrs) => {
-    return at(this, attrs);
-  }
+  take = (...attrs) => at(this, attrs)
 
   react = (callback) => {
     autorun(() => callback(this));
@@ -30,18 +28,18 @@ export default class BaseAction {
 
   static async run(params) {
     const action = new this();
-    action.state = "running";
+    action.state = 'running';
     await action.run(params);
-    action.state = "success";
+    action.state = 'success';
     return action;
   }
 
   static async runFailsafe(params) {
     const action = new this();
     try {
-      action.state = "running";
+      action.state = 'running';
       await action.run(params);
-      action.state = "success";
+      action.state = 'success';
     } catch (e) {
       action.onError(e);
     }
@@ -50,9 +48,9 @@ export default class BaseAction {
 
   static runAsync(params) {
     const action = new this();
-    action.state = "running";
+    action.state = 'running';
     action.run(params).then(() => {
-      action.state = "success";
+      action.state = 'success';
     }).catch(action.onError);
     return action;
   }

@@ -1,33 +1,33 @@
-import lodash from "lodash"
-import { observable, computed } from "mobx"
-import autobind from "autobind-decorator"
-import Room from "../models/room"
+import lodash from 'lodash';
+import { observable, computed } from 'mobx';
+import Room from '../models/room';
 
-@autobind
 class RoomsStore {
   @observable rooms = [];
   @observable isWorking = false;
   @observable chosenRoom = null;
 
   @computed get availableRooms() {
-    return lodash.reject(this.rooms, "occupied")
+    return lodash.reject(this.rooms, 'occupied');
   }
 
   @computed get occupiedRooms() {
-    return lodash.filter(this.rooms, "occupied")
+    return lodash.filter(this.rooms, 'occupied');
   }
 
   async reload() {
     try {
-      this.isWorking = true
-      var response = await fetch('http://172.20.0.29:8080/move')
-      var responseJson = await response.json()
-      this.rooms = responseJson.map((room) => {
-        return new Room({id: room.id, description: room.description, last_detection : room.last_detection  })
-      })
-      this.isWorking = false
+      this.isWorking = true;
+      const response = await fetch('http://172.20.0.29:8080/move');
+      const responseJson = await response.json();
+      this.rooms = responseJson.map(room => new Room({
+        id: room.id,
+        description: room.description,
+        last_detection: room.last_detection,
+      }));
+      this.isWorking = false;
     } catch (e) {
-      this.isWorking = false
+      this.isWorking = false;
       console.log(e);
     }
   }
@@ -39,4 +39,4 @@ class RoomsStore {
 }
 
 const roomsStore = new RoomsStore();
-export default roomsStore
+export default roomsStore;

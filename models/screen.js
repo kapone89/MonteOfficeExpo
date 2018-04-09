@@ -1,6 +1,3 @@
-import lodash from "lodash"
-import { stringify } from 'query-string';
-
 export default class Screen {
   constructor(params) {
     this.id = params.id;
@@ -9,27 +6,27 @@ export default class Screen {
     this.thumb = params.thumb;
   }
 
-  async setOnTv(tvNo) {
+  setOnTv = async (tvNo) => {
     try {
-      await fetch('http://172.20.0.29:8080/tv/' + tvNo, {
+      await fetch(`http://172.20.0.29:8080/tv/${tvNo}`, {
         method: 'POST',
         headers: {
-          'Accept': 'application/json',
+          Accept: 'application/json',
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           url: this.website,
-        })
-      })
-      await this.refreshOnTv(tvNo)
+        }),
+      });
+      await this.refreshOnTv(tvNo);
     } catch (e) {
       console.log(e);
     }
   }
 
-  async refreshOnTv(tvNo) {
+  refreshOnTv = async (tvNo) => {
     try {
-      await fetch('http://172.20.0.29:8080/tv-reload/' + tvNo)
+      await fetch(`http://172.20.0.29:8080/tv-reload/${tvNo}`);
     } catch (e) {
       console.log(e);
     }
